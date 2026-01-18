@@ -29,6 +29,10 @@ app.get('/api/items/:id', (req, res) => {
   const item = items.find(i => i.id === parseInt(req.params.id));
   item ? res.json(item) : res.status(404).send('Not Found');
 });
-
+app.post('/api/items', (req, res) => {
+  const newItem = { id: items.length + 1, ...req.body };
+  items.push(newItem);
+  res.status(201).json(newItem);
+});
 
 app.listen(5000, () => console.log('Server running on http://localhost:5000'));
