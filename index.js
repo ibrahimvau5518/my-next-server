@@ -23,4 +23,7 @@ let items = [
   },
 ];
 
+// Routes
+app.get('/api/items', (req, res) => res.json(items));
+
 app.listen(5000, () => console.log('Server running on http://localhost:5000'));
