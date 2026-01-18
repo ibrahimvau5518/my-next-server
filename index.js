@@ -25,5 +25,10 @@ let items = [
 
 // Routes
 app.get('/api/items', (req, res) => res.json(items));
+app.get('/api/items/:id', (req, res) => {
+  const item = items.find(i => i.id === parseInt(req.params.id));
+  item ? res.json(item) : res.status(404).send('Not Found');
+});
+
 
 app.listen(5000, () => console.log('Server running on http://localhost:5000'));
